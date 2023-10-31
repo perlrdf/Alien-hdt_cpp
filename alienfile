@@ -1,0 +1,23 @@
+use alienfile;
+
+plugin PkgConfig => 'hdt';
+
+share {
+  start_url 'https://github.com/rdfhdt/hdt-cpp/archive/d9ae092bb37d9fe85558dfb3edfe0bb6ddddf41a.tar.gz';
+  plugin Download => ();
+  plugin Extract => 'tar.gz';
+  plugin 'Build::Autoconf';
+  build [
+    '%{configure} --enable-static --disable-shared',
+    '%{make}',
+    '%{make} install',
+  ];
+  ffi {
+    build [
+      '%{configure} --disable-static --enable-shared',
+      '%{make}',
+      '%{make} install',
+    ];
+  };
+  plugin 'Gather::IsolateDynamic';
+}
