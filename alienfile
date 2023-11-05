@@ -1,12 +1,21 @@
 use alienfile;
 
+use Env qw(@PKG_CONFIG_PATH);
+
 plugin PkgConfig => 'hdt';
 
 share {
+  requires 'Alien::Serd';
   start_url 'https://github.com/rdfhdt/hdt-cpp/archive/d9ae092bb37d9fe85558dfb3edfe0bb6ddddf41a.tar.gz';
   plugin Download => ();
   plugin Extract => 'tar.gz';
   plugin 'Build::Autoconf';
+
+  eval {
+    require Alien::Serd;
+    push @PKG_CONFIG_PATH, Alien::Serd->pkg_config_path;
+  } or warn "Unable to add to \$PKG_CONFIG_PATH (@PKG_CONFIG_PATH): $@";
+
   build [
     '%{configure} --enable-static --disable-shared',
     '%{make}',
