@@ -11,18 +11,27 @@ share {
   plugin Extract => 'tar.gz';
   plugin 'Build::Autoconf';
 
+  my $patch = [
+    '%{patch} -p1 < %{.install.patch}/gh-pr-273.patch'
+  ];
+
+  patch $patch;
+
   eval {
     require Alien::Serd;
     push @PKG_CONFIG_PATH, Alien::Serd->pkg_config_path;
   } or warn "Unable to add to \$PKG_CONFIG_PATH (@PKG_CONFIG_PATH): $@";
 
   build [
+    'sh ./autogen.sh',
     '%{configure} --enable-static --disable-shared',
     '%{make}',
     '%{make} install',
   ];
   ffi {
+    patch $patch;
     build [
+      'sh ./autogen.sh',
       '%{configure} --disable-static --enable-shared',
       '%{make}',
       '%{make} install',
