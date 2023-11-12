@@ -20,7 +20,7 @@ share {
   plugin 'Build::Autoconf';
 
   my $patch = [
-    '%{patch} -p1 < %{.install.patch}/gh-pr-273.patch'
+    '%{patch} -p4 -d libhdt/src/util  < %{.install.patch}/gh-pr-273.patch'
   ];
 
   patch $patch;
