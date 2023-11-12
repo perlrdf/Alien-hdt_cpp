@@ -10,6 +10,7 @@ share {
   # for now.
   #requires 'Alien::Autotools';
   requires 'Alien::Serd';
+  requires 'Alien::zlib';
   start_url 'https://github.com/rdfhdt/hdt-cpp/archive/d9ae092bb37d9fe85558dfb3edfe0bb6ddddf41a.tar.gz';
   plugin Download => ();
   plugin Extract => 'tar.gz';
