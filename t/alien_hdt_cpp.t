@@ -6,9 +6,12 @@ use Alien::hdt_cpp;
 alien_diag 'Alien::hdt_cpp';
 alien_ok 'Alien::hdt_cpp';
 
-# run_ok([ ... ])
-#   ->success
-#   ->out_like(qr/ ... /);
+run_ok([ qw(rdf2hdt corpus/example1.ttl example1.hdt) ])
+  ->success;
+
+run_ok([ qw(hdt2rdf example1.hdt -) ])
+  ->success
+  ->out_like(qr{\QRDF/XML Syntax\E});
 
 # my $xs = <<'END';
 # #include "EXTERN.h"
