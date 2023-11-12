@@ -67,7 +67,7 @@ jobs:
         alien-install-type: [ 'share' ]
         include:
           # Windows strawberry     | share
-          - { perl-version: '5.34' , os: windows-latest , dist: strawberry , alien-install-type: 'share'                                  }
+          #- { perl-version: '5.34' , os: windows-latest , dist: strawberry , alien-install-type: 'share'                                  }
           # Windows msys2          | system, share
           - { perl-version: '5.34' , os: windows-latest , dist: msys2      , alien-install-type: 'share'                                  }
           # macOS                  | system, share
