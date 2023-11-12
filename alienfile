@@ -5,6 +5,10 @@ use Env qw(@PKG_CONFIG_PATH);
 plugin PkgConfig => 'hdt';
 
 share {
+  # NOTE Disable using Alien::Autotools and
+  #   '%{autoreconf} -vfi',
+  # for now.
+  #requires 'Alien::Autotools';
   requires 'Alien::Serd';
   start_url 'https://github.com/rdfhdt/hdt-cpp/archive/d9ae092bb37d9fe85558dfb3edfe0bb6ddddf41a.tar.gz';
   plugin Download => ();
