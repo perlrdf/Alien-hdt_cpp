@@ -26,7 +26,7 @@ share {
   patch $patch;
 
   eval {
-    require Alien::Serd;
+    eval "require Alien::Serd;" or die "Could not load Alien::Serd";
     push @PKG_CONFIG_PATH, Alien::Serd->pkg_config_path;
   } or warn "Unable to add to \$PKG_CONFIG_PATH (@PKG_CONFIG_PATH): $@";
 
