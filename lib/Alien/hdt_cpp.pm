@@ -90,6 +90,10 @@ for the use of other modules.
 
 =over 4
 
+=item L<https://www.rdfhdt.org/>
+
+RDF HDT homepage
+
 =item L<Alien>
 
 Documentation on the Alien concept itself.
