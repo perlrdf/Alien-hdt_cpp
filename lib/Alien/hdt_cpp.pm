@@ -9,7 +9,7 @@ use 5.008004;
 
 =head1 NAME
 
-Alien::hdt_cpp - Find or build hdt-cpp
+Alien::hdt_cpp - Find or build hdt-cpp (RDF binary format library)
 
 =head1 SYNOPSIS
 

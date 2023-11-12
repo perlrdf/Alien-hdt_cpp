@@ -1,6 +1,6 @@
 # NAME
 
-Alien::hdt\_cpp - Find or build hdt-cpp
+Alien::hdt\_cpp - Find or build hdt-cpp (RDF binary format library)
 
 # SYNOPSIS
 
