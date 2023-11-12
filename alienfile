@@ -23,19 +23,19 @@ share {
   } or warn "Unable to add to \$PKG_CONFIG_PATH (@PKG_CONFIG_PATH): $@";
 
   build [
+
+    # shared
+    'sh ./autogen.sh',
+    '%{configure} --disable-static --enable-shared',
+    '%{make}',
+    '%{make} install',
+
+    # static
     'sh ./autogen.sh',
     '%{configure} --enable-static --disable-shared',
     '%{make}',
     '%{make} install',
   ];
-  ffi {
-    patch $patch;
-    build [
-      'sh ./autogen.sh',
-      '%{configure} --disable-static --enable-shared',
-      '%{make}',
-      '%{make} install',
-    ];
-  };
+
   plugin 'Gather::IsolateDynamic';
 }
